@@ -1,10 +1,21 @@
 <template>
   <div>
+    <Header></Header>
     <nuxt />
+    <Footer></Footer>
   </div>
 </template>
-
-<style lang="less" scoped>
+<script>
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+export default {
+  components: {
+    Header,
+    Footer
+  }
+};
+</script>
+<style lang="less">
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -129,6 +140,6 @@ body {
 /*版心 居中对齐*/
 .w {
   margin: auto;
-  width: 1200px;
+  width: 1000px;
 }
 </style>

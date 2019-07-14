@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div class="cotiner"></div>
 </template>
 
 <script>
@@ -8,3 +8,5 @@ export default {};
 
 <style lang="less" scoped>
 </style>
+
+
