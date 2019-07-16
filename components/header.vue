@@ -10,13 +10,16 @@
       <!-- 菜单栏 -->
       <el-row class="navs" type="flex" F>
         <nuxt-link to="/">首页</nuxt-link>
-        <nuxt-link to="/">旅游攻略</nuxt-link>
-        <nuxt-link to="/">酒店</nuxt-link>
-        <nuxt-link to="/">国内机票</nuxt-link>
+        <nuxt-link to="/post">旅游攻略</nuxt-link>
+        <nuxt-link to="/hotel">酒店</nuxt-link>
+        <nuxt-link to="/air">国内机票</nuxt-link>
       </el-row>
       <!-- 登录注册 -->
+      <el-row v-if="false">
+        <nuxt-link to="/user/login">登录 / 注册</nuxt-link>
+      </el-row>
       <el-row>
-        <nuxt-link to="/">登录 / 注册</nuxt-link>
+        <nuxt-link to="/user/login">登录 / 注册</nuxt-link>
       </el-row>
     </el-row>
   </div>
