@@ -57,7 +57,7 @@ export default {
   methods: {
     handloptions(index) {
       if (index === 2) {
-        this, $router.push("/air");
+        this.$router.push("/air");
       }
       this.contentTab = index;
     },

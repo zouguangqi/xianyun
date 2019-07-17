@@ -8,25 +8,57 @@
         </nuxt-link>
       </div>
       <!-- 菜单栏 -->
-      <el-row class="navs" type="flex" F>
+      <el-row class="navs" type="flex">
         <nuxt-link to="/">首页</nuxt-link>
         <nuxt-link to="/post">旅游攻略</nuxt-link>
         <nuxt-link to="/hotel">酒店</nuxt-link>
         <nuxt-link to="/air">国内机票</nuxt-link>
       </el-row>
       <!-- 登录注册 -->
-      <el-row v-if="false">
-        <nuxt-link to="/user/login">登录 / 注册</nuxt-link>
-      </el-row>
-      <el-row>
-        <nuxt-link to="/user/login">登录 / 注册</nuxt-link>
-      </el-row>
+      <div>
+        <div v-if="!$store.state.user.userInfo.token">
+          <nuxt-link to="/user/login">登录 / 注册</nuxt-link>
+        </div>
+        <div v-else>
+          <el-dropdown>
+            <span class="el-dropdown-link">
+              <!-- 头像 -->
+              <img
+                :src="$axios.defaults.baseURL  + $store.state.user.userInfo.user.defaultAvatar"
+                alt
+              />
+              {{ $store.state.user.userInfo.user.nickname }}
+              <i
+                class="el-icon-arrow-down el-icon--right"
+              ></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人中心</el-dropdown-item>
+              <el-dropdown-item @click.native="handeLogout">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
     </el-row>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    handeLogout() {
+      // this.$store.commit("user/clearUserInfo");
+
+      const { commit } = this.$store;
+      commit("user/cleanUserInfo");
+
+      this.$message({
+        message: "退出成功",
+        type: "success"
+      });
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -61,6 +93,12 @@ export default {};
         color: #fff;
         border-bottom: 5px solid #ccc;
       }
+    }
+  }
+  .el-dropdown-link {
+    img {
+      width: 30px;
+      height: 30px;
     }
   }
 }
